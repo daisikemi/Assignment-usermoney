@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-client = mongo_client.MongoClient(os.environ.get("MONGO_DB_CONNECTION_URI"))
-
+uri=(os.environ.get("MONGO_DB_CONNECTION_URI"))
+client = mongo_client.MongoClient(uri, ssl=True, tls=True)
 accounts_collection = client["user_money"]["accounts"]
 users_collection = client["user_money"]["users"]
 transactions_collection = client["user_money"]["transactions"]
